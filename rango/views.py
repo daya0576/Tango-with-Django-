@@ -49,9 +49,12 @@ def index(request):
 def about(request):
     content_dict = {'boldmessage': 'Could u tell me something about yourself?'}
 
-    if request.session.test_cookie_worked():
-        print ">>>> TEST COOKIE WORKED!"
-        request.session.delete_test_cookie()
+    if request.session.get('visits'):
+        count = request.session.get('visits')
+    else:
+        count = 0
+
+    content_dict['visits'] = count
 
     return render(request, 'rango/about.html', content_dict)
 

@@ -23,7 +23,7 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
     # url(r'^$', views.index, name='index')
 
-    url(r'^rango/', include('rango.urls')), # ADD THIS NEW TUPLE!
+    url(r'^rango/', include('rango.urls')),
 )
 
 # UNDERNEATH your urlpatterns definition, add the following two lines:

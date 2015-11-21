@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 
+{% load bootstrap_toolkit %}
+
 {% load staticfiles %}
 
 {% block title %}Add Category{% endblock %}
@@ -7,19 +9,25 @@
 {% block body_block %}
     <h1>Add a Category</h1>
 
-    <form id="category_form" method="post" action="/rango/add_category/">
-
+    <form id="category_form" method="post" action="{% url 'add_category' %}">
+        <h2 class="form-signin-heading">Add a Category</a></h2>
         {% csrf_token %}
-        {% for hidden in form.hidden_fields %}
-            {{ hidden }}
-        {% endfor %}
 
-        {% for field in form.visible_fields %}
-            {{ field.errors }}
-            {{ field.help_text }}
-            {{ field }}
-        {% endfor %}
+        <!--{% for hidden in form.hidden_fields %}-->
+            <!--{{ hidden }}-->
+        <!--{% endfor %}-->
 
-        <input type="submit" name="submit" value="Create Category" />
+        <!--{% for field in form.visible_fields %}-->
+            <!--{{ field.errors }}-->
+            <!--{{ field.help_text }}-->
+            <!--{{ field }}<br>-->
+        <!--{% endfor %}-->
+        <!--<br>-->
+
+        {{ form|as_bootstrap }}
+        <br>
+
+        <!--<input type="submit" name="submit" value="Create Category" />-->
+        <button class="btn btn-primary" type="submit" name="submit">Create Category</button>
     </form>
 {% endblock %}

@@ -1,3 +1,4 @@
+#coding: UTF-8
 """
 Django settings for tango_with_django_project project.
 
@@ -12,6 +13,7 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
+from rango import keys
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 TEMPLATE_PATH = os.path.join(BASE_DIR, 'templates')
@@ -33,12 +35,14 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = (
     'django.contrib.admin',
     'django.contrib.auth',
+    'django.contrib.sites',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
     'rango',
+    'registration',
     'bootstrap_toolkit',
 )
 
@@ -113,8 +117,30 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media') # Absolute path to the media directory
 
 # Auth
-LOGIN_URL = '/rango/login/'
+# LOGIN_URL = '/rango/login/'
 
 # Session
 SESSION_EXPIRE_AT_BROWSER_CLOSE = False
 SESSION_COOKIE_AGE = 60*60*24*30
+
+# django-registration-redux
+REGISTRATION_OPEN = True                # If True, users can register
+ACCOUNT_ACTIVATION_DAYS = 7     # One-week activation window; you may, of course, use a different value.
+REGISTRATION_AUTO_LOGIN = False  # If True, the user will be automatically logged in.
+LOGIN_REDIRECT_URL = '/rango/'  # The page you want users to arrive at after they successful log in
+LOGIN_URL = '/accounts/login/'
+
+# more settings see: http://django-registration-redux.readthedocs.org/en/latest/
+# ---------------------------------------------------------
+# Email
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'daya0576@gmail.com'
+EMAIL_HOST_PASSWORD = 'a7198192'  #keys.EMAIL_KEY
+EMAIL_PORT = 587
+# EMAIL_PORT = 25
+EMAIL_USE_TLS = True
+# ---------------------------------------------------------
+
+SITE_ID = 3
+

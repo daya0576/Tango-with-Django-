@@ -4,7 +4,7 @@ from rango.models import Category, Page, UserProfile
 
 
 class PageAdmin(admin.ModelAdmin):
-    list_display = ('title', 'category', 'url')
+    list_display = ('id', 'title', 'category', 'url')
 
 
 class CategoryAdmin(admin.ModelAdmin):

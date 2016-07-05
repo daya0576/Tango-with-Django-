@@ -1,2 +1,2 @@
-while 1:
+while Ture:
 	print "new features"

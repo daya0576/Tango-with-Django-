@@ -1,1 +1,2 @@
-print "new features"
+while 1:
+	print "new features"
